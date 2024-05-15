@@ -21,7 +21,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ cellphone });
     if (!user) return res.status(400).send({ error: "Usuario no encontrado" });
     if (user.password != password)
-      res.status(400).send({ error: "Contraseña incorrecta" });
+      return res.status(400).send({ error: "Contraseña incorrecta" });
     return res.status(200).send({ token: user._id });
   } catch (error) {
     console.log(error);
