@@ -7,6 +7,7 @@ const AlertSchema = Schema(
     longitude: Number,
     user: { type: Schema.Types.ObjectId, ref: "users" },
     name: String,
+    direction: String,
     laname: String,
     dni: String,
     incidence: String,
