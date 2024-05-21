@@ -22,7 +22,7 @@ const login = async (req, res) => {
     if (!user) return res.status(400).send({ error: "Usuario no encontrado" });
     if (user.password != password)
       return res.status(400).send({ error: "Contraseña incorrecta" });
-    return res.status(200).send({ token: user._id });
+    return res.status(200).send({ token: user._id.toString() });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: "Error on server" });
