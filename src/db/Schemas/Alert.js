@@ -7,15 +7,14 @@ const AlertSchema = Schema(
     longitude: Number,
     user: { type: Schema.Types.ObjectId, ref: "users" },
     name: String,
-    direction: String,
-    laname: String,
+    lname: String,
     dni: String,
     incidence: String,
-    status: Number,
+    status: { type: Number, default: '0' },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = model("incidence", AlertSchema);
+module.exports = model("alert", AlertSchema);

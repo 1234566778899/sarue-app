@@ -30,7 +30,18 @@ const login = async (req, res) => {
 
 };
 
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).send(users);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: 'Error on server' });
+  }
+}
+
 module.exports = {
   register,
   login,
+  getUsers
 };

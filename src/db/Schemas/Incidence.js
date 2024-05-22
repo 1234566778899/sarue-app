@@ -2,12 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const IncidenceSchema = Schema(
   {
-    address: String,
-    latitude: String,
-    longitude: String,
-    user: String,
-    incidencia: String,
-    status: Number,
+    name: String,
+    description: String
   },
   {
     timestamps: true,
