@@ -4,8 +4,11 @@ const SuggestionSchema = Schema(
   {
     description: String,
     usuario: { type: Schema.Types.ObjectId, ref: "users" },
-    status: String,
+    status: Number,
     category: String,
+    name: String,
+    lname: String,
+    dni: String
   },
   {
     timestamps: true,
