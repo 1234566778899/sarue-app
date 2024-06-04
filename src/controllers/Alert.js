@@ -27,7 +27,31 @@ const getAlerts = async (req, res) => {
     }
 }
 
+const deleteAlert = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Alert.deleteOne({ _id: id });
+        res.status(200).send({ ok: 'Successful' });
+    } catch (error) {
+        res.status(500).send({ error: 'Error on server' });
+    }
+}
+
+const updateState = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+        await Alert.findOneAndUpdate({ _id: id }, { status });
+        res.status(200).send({ ok: 'Successful' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ error: 'Error on server' });
+    }
+}
+
 module.exports = {
     sendAlert,
-    getAlerts
+    getAlerts,
+    deleteAlert,
+    updateState
 }

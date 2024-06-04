@@ -39,9 +39,42 @@ const getUsers = async (req, res) => {
     res.status(500).send({ error: 'Error on server' });
   }
 }
+const getUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findOne({ _id: id });
+    res.status(200).send(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: 'Error on server' });
+  }
+}
 
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findOneAndUpdate({ _id: id }, req.body)
+    res.status(200).send({ ok: 'Successful' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: 'Error on server' });
+  }
+}
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.deleteOne({ _id: id });
+    res.status(200).send({ ok: 'Successful' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: 'Error on server' });
+  }
+}
 module.exports = {
   register,
   login,
-  getUsers
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser
 };
