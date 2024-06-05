@@ -4,11 +4,11 @@ const User = require('../db/Schemas/User');
 
 const sendAlert = async (req, res) => {
     try {
-        const { address, latitude, user, longitude, incidence } = req.body;
+        const { address, latitude, user, longitude, incidence, typeIncidence } = req.body;
         const userFound = await User.findOne({ _id: user });
         if (!userFound) return res.status(400).send({ error: 'Usuario no encontrado' });
 
-        const alert = new Alert({ dni: userFound.dni, name: userFound.name, incidence, lname: userFound.lname, address, latitude, longitude, user })
+        const alert = new Alert({ dni: userFound.dni, name: userFound.name, incidence, lname: userFound.lname, address, latitude, longitude, user, typeIncidence })
         await alert.save();
         res.status(200).send({ ok: 'Enviado correctamente' });
     } catch (error) {

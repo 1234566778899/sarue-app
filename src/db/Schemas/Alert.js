@@ -11,6 +11,7 @@ const AlertSchema = Schema(
     dni: String,
     incidence: String,
     status: { type: Number, default: '0' },
+    typeIncidence: String
   },
   {
     timestamps: true,
