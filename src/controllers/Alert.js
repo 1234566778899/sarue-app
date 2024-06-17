@@ -10,7 +10,7 @@ const sendAlert = async (req, res) => {
 
         const alert = new Alert({ dni: userFound.dni, name: userFound.name, incidence, lname: userFound.lname, address, latitude, longitude, user, typeIncidence })
         await alert.save();
-        res.status(200).send({ ok: 'Enviado correctamente' });
+        res.status(200).send({ ok: 'Enviado correctamente :)' });
     } catch (error) {
         console.log(error);
         res.status(500).send({ error: 'Error on server' });
