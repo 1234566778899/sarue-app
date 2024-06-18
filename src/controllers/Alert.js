@@ -29,9 +29,11 @@ const getAlerts = async (req, res) => {
 const getAlertByUser = async (req, res) => {
     try {
         const { id } = req.params;
+        console.log(id)
         const alerts = await Alert.find({ user: id });
         res.status(200).send(alerts);
     } catch (error) {
+        console.log(error);
         res.status(400).send({ error: 'Error on server' });
     }
 }
