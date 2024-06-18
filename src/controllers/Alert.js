@@ -26,7 +26,15 @@ const getAlerts = async (req, res) => {
         res.status(500).send({ error: 'Error on server' });
     }
 }
-
+const getAlertByUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const alerts = await Alert.find({ user: id });
+        res.status(200).send(alerts);
+    } catch (error) {
+        res.status(400).send({ error: 'Error on server' });
+    }
+}
 const deleteAlert = async (req, res) => {
     try {
         const { id } = req.params;
@@ -53,5 +61,6 @@ module.exports = {
     sendAlert,
     getAlerts,
     deleteAlert,
-    updateState
+    updateState,
+    getAlertByUser
 }
