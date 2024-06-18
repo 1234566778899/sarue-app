@@ -1,8 +1,12 @@
-const Suggestion = require('../db/Schemas/Suggestion')
+const Suggestion = require('../db/Schemas/Suggestion');
+const User = require('../db/Schemas/User');
 
 const createSuggestion = async (req, res) => {
     try {
-        const sugg = new Suggestion(req.body);
+        const { user } = req.body;
+        const userFound = await User.findOne({ _id: user });
+        if (!userFound) return res.status(400).send({ error: 'Usuario no encontrado' });
+        const sugg = new Suggestion({ ...req.body, status: 0, name: userFound.name, lname: userFound.lname, dni: userFound.dni });
         await sugg.save();
         res.status(200).send({ ok: 'Successful' });
     } catch (error) {

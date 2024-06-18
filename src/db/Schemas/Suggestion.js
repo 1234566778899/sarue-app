@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const SuggestionSchema = Schema(
   {
     description: String,
-    usuario: { type: Schema.Types.ObjectId, ref: "users" },
+    user: { type: Schema.Types.ObjectId, ref: "users" },
     status: Number,
     category: String,
     name: String,
