@@ -15,7 +15,6 @@ app.use("/users", require("./routes/User"));
 app.use("/alerts", require("./routes/Alert"));
 app.use("/incidences", require("./routes/Incidence"));
 app.use("/suggestions", require("./routes/Suggestion"));
-
 app.listen(port, () => {
   console.log("server running on port: " + port);
 });
